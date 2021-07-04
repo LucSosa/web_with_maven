@@ -1,0 +1,1 @@
+Realizando integração git bash e vscode
