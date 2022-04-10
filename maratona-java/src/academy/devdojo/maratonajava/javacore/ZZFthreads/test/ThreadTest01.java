@@ -1,5 +1,12 @@
 package academy.devdojo.maratonajava.javacore.ZZFthreads.test;
 
+//        Estados das Threads
+//
+//                     Waiting Blocked
+//                        ||                   ^
+//                        ˇ                   ||
+// New => Runnable <=  => Running => Dead
+
 class ThreadExample extends Thread{
     private final char c;
 
@@ -34,6 +41,11 @@ class ThreadExampleRunnable implements Runnable{
             if (i % 100 ==0){
                 System.out.println();
             }
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
@@ -50,6 +62,8 @@ public class ThreadTest01 {
         Thread t2 = new Thread(new ThreadExampleRunnable('B'), "T2B");
         Thread t3 = new Thread(new ThreadExampleRunnable('C'), "T3C");
         Thread t4 = new Thread(new ThreadExampleRunnable('D'), "T4D");
+
+        t4.setPriority(Thread.MAX_PRIORITY);
 
         t1.start();
         t2.start();
