@@ -7,18 +7,18 @@ public class Members {
     private final Queue<String> emails = new ArrayBlockingQueue<>(10);
     private boolean open = true;
 
-    public boolean isOpen(){
+    public boolean isOpen() {
         return open;
     }
 
-    public int pendingEmails(){
-        synchronized (emails){
+    public int pendingEmails() {
+        synchronized (emails) {
             return emails.size();
         }
     }
 
-    public void addMemberEmail(String email){
-        synchronized (this.emails){
+    public void addMemberEmail(String email) {
+        synchronized (this.emails) {
             System.out.println(getThreadName() + " Adicionou email na lista");
             this.emails.add(email);
             this.emails.notifyAll();
@@ -27,8 +27,8 @@ public class Members {
 
     public String retrieveEmail() throws InterruptedException {
         System.out.println(getThreadName() + " checking if there are emails");
-        synchronized (this.emails){
-            while (this.emails.size() == 0){
+        synchronized (this.emails) {
+            while (this.emails.size() == 0) {
                 if (!open) return null;
                 System.out.println(getThreadName() + " Não tem email disponível na lista, entrando em modo de espera");
                 this.emails.wait();
@@ -37,11 +37,12 @@ public class Members {
         }
     }
 
-    public void close(){
+    public void close() {
         open = false;
-        synchronized (this.emails){
-        System.out.println(getThreadName() + " Notificando todo mundo que não estamos mais pegando emails");
-    }
+        synchronized (this.emails) {
+            System.out.println(getThreadName() + " Notificando todo mundo que não estamos mais pegando emails");
+            this.emails.notifyAll();
+        }
     }
 
     private String getThreadName() {

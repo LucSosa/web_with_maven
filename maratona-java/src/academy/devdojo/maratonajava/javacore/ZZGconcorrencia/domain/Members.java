@@ -29,21 +29,24 @@ public class Members {
         try {
             System.out.println(getThreadName() + " Adicionou email na lista");
             this.emails.add(email);
-            this.emails.notifyAll();
-        }finally {
+            condition.signalAll();
+        } finally {
             lock.unlock();
         }
     }
 
     public String retrieveEmail() throws InterruptedException {
         System.out.println(getThreadName() + " checking if there are emails");
-        synchronized (this.emails) {
+        lock.lock();
+        try {
             while (this.emails.size() == 0) {
                 if (!open) return null;
                 System.out.println(getThreadName() + " Não tem email disponível na lista, entrando em modo de espera");
-                this.emails.wait();
+                condition.await();
             }
             return this.emails.poll();
+        } finally {
+            lock.unlock();
         }
     }
 
@@ -51,6 +54,7 @@ public class Members {
         open = false;
         synchronized (this.emails) {
             System.out.println(getThreadName() + " Notificando todo mundo que não estamos mais pegando emails");
+            condition.signalAll();
         }
     }
 
