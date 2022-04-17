@@ -1,7 +1,6 @@
 package academy.devdojo.maratonajava.javacore.ZZGconcorrencia.test;
 
-import academy.devdojo.maratonajava.javacore.ZZGconcorrencia.domain.StoreService;
-import academy.devdojo.maratonajava.javacore.ZZGconcorrencia.domain.StoreServiceDeprecated;
+import academy.devdojo.maratonajava.javacore.ZZGconcorrencia.service.StoreServiceDeprecated;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -15,7 +14,7 @@ public class CompletableFutureTest03 {
         searchPriceCompletableFuture(storeServiceDeprecated);
     }
 
-    private static void searchPriceCompletableFuture(StoreService storeService) {
+    private static void searchPriceCompletableFuture(StoreServiceDeprecated storeService) {
         long start = System.currentTimeMillis();
         ExecutorService executor = Executors.newFixedThreadPool(10, r -> {
             Thread thread = new Thread(r);

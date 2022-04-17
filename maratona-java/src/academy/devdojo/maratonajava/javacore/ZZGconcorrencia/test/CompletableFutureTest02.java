@@ -1,6 +1,6 @@
 package academy.devdojo.maratonajava.javacore.ZZGconcorrencia.test;
 
-import academy.devdojo.maratonajava.javacore.ZZGconcorrencia.domain.StoreService;
+import academy.devdojo.maratonajava.javacore.ZZGconcorrencia.service.StoreService;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;

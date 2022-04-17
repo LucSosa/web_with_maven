@@ -1,4 +1,4 @@
-package academy.devdojo.maratonajava.javacore.ZZGconcorrencia.domain;
+package academy.devdojo.maratonajava.javacore.ZZGconcorrencia.service;
 
 import java.util.concurrent.*;
 
