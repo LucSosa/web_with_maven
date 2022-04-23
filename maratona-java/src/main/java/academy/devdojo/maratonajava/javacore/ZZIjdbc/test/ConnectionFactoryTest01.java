@@ -30,7 +30,7 @@ public class ConnectionFactoryTest01 {
 //        ProducerService.showTypeScrollWorking();
 //        List<Producer> producers = ProducerService.findByNameAndUpdateToUpperCase("Deen");
 //        List<Producer> producers = ProducerService.findByNameAndInsertWhenNotFound("Bones");
-        ProducerService.findByNameAndDelete("Bones");
+//        ProducerService.findByNameAndDelete("Bones");
 //        log.info("Producers found '{}'", producers);
     }
 }
