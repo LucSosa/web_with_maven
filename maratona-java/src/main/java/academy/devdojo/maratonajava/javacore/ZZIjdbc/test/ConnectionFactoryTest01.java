@@ -26,6 +26,11 @@ public class ConnectionFactoryTest01 {
 //       log.info("error");
 //       log.info("trace");
 //        ProducerService.showProducerMetaData();
-        ProducerService.showDriverMetaData();
+//        ProducerService.showDriverMetaData();
+//        ProducerService.showTypeScrollWorking();
+//        List<Producer> producers = ProducerService.findByNameAndUpdateToUpperCase("Deen");
+//        List<Producer> producers = ProducerService.findByNameAndInsertWhenNotFound("Bones");
+        ProducerService.findByNameAndDelete("Bones");
+//        log.info("Producers found '{}'", producers);
     }
 }
