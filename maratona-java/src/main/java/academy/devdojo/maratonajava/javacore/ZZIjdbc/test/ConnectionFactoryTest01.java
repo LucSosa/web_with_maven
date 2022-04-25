@@ -33,7 +33,7 @@ public class ConnectionFactoryTest01 {
 //        List<Producer> producers = ProducerService.findByNamePreparedStatement("NHK");
 //        log.info("Producers found '{}'", producers);
 //        ProducerService.updatePreparedStatement(producerToUpdate);
-        List<Producer> producers = ProducerService.findByNameCallableStatement("NHK");
-        log.info("Producers found '{}'", producers);
+//        List<Producer> producers = ProducerService.findByNameCallableStatement("NHK");
+//        log.info("Producers found '{}'", producers);
     }
 }
