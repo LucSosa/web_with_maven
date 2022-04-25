@@ -12,7 +12,7 @@ import java.util.List;
 public class ConnectionFactoryTest01 {
     public static void main(String[] args) {
         Producer producer = Producer.builder().name("Studio Deen").build();
-        Producer producerToUpdate = Producer.builder().id(1).name("MADHOUUSE").build();
+        Producer producerToUpdate = Producer.builder().id(1).name("madhouse").build();
 //        ProducerService.save(producer);
 //        ProducerService.delete(4);
 //        ProducerService.delete(5);
@@ -32,5 +32,8 @@ public class ConnectionFactoryTest01 {
 //        List<Producer> producers = ProducerService.findByNameAndInsertWhenNotFound("Bones");
 //        ProducerService.findByNameAndDelete("Bones");
 //        log.info("Producers found '{}'", producers);
+//        List<Producer> producers = ProducerService.findByNamePreparedStatement("NHK");
+//        log.info("Producers found '{}'", producers);
+        ProducerService.updatePreparedStatement(producerToUpdate);
     }
 }
