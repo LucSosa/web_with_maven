@@ -4,6 +4,8 @@ import academy.devdojo.maratonajava.javacore.ZZIjdbc.domain.Producer;
 import academy.devdojo.maratonajava.javacore.ZZIjdbc.service.ProducerService;
 import lombok.extern.log4j.Log4j2;
 
+import java.util.List;
+
 @Log4j2
 public class ConnectionFactoryTest01 {
     public static void main(String[] args) {
@@ -30,6 +32,8 @@ public class ConnectionFactoryTest01 {
 //        log.info("Producers found '{}'", producers);
 //        List<Producer> producers = ProducerService.findByNamePreparedStatement("NHK");
 //        log.info("Producers found '{}'", producers);
-        ProducerService.updatePreparedStatement(producerToUpdate);
+//        ProducerService.updatePreparedStatement(producerToUpdate);
+        List<Producer> producers = ProducerService.findByNameCallableStatement("NHK");
+        log.info("Producers found '{}'", producers);
     }
 }
