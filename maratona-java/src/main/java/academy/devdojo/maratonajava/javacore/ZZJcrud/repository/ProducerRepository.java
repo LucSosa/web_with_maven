@@ -21,14 +21,14 @@ public class ProducerRepository {
         List<Producer> producers = new ArrayList<>();
         try (Connection conn = ConnectionFactory.getConnection();
              PreparedStatement ps = createPrepareStatementFindByName(conn, name);
-             ResultSet rs = ps.executeQuery(sql)) {
+             ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
-                producers.add(
-                        Producer
+                Producer producer = Producer
                                 .builder()
                                 .id(rs.getInt("id"))
                                 .name(rs.getString("name"))
-                                .build());
+                                .build();
+                producers.add(producer);
             }
         } catch (SQLException e) {
             log.error("Error while trying to find all producers", e);

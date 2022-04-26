@@ -10,14 +10,17 @@ public class ProducerService {
 
     public static void buildMenu(int op){
         switch (op) {
-            case 1:
+            case 1: findByName(); break;
+            default: throw new IllegalArgumentException("Not a valid option");
         }
     }
 
-    private static void findByName(String name){
+    private static void findByName(){
+        System.out.println("Type the name or empty to all");
+        String name = scanner.nextLine();
         List<Producer> producers = ProducerRepository.findByName(name);
         for (int i = 0; i < producers.size(); i++) {
-            System.out.printf("[%d] - %s", i, producers.get(i).getName());
+            System.out.printf("[%d] - %s%n", i, producers.get(i).getName());
         }
     }
 }
