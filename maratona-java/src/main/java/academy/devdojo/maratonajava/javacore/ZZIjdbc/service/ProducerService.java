@@ -10,6 +10,10 @@ public class ProducerService {
         ProducerRepository.save(producer);
     }
 
+    public static void savetransaction(List<Producer> producers) {
+        ProducerRepository.savetransaction(producers);
+    }
+
     public static void delete(Integer id) {
         requireValidId(id);
         ProducerRepository.delete(id);
@@ -37,7 +41,6 @@ public class ProducerService {
         return ProducerRepository.findByNamePreparedStatement(name);
     }
 
-    //Utilizando o git
     public static List<Producer> findByNameCallableStatement(String name) {
         return ProducerRepository.findByNameCallableStatement(name);
     }
