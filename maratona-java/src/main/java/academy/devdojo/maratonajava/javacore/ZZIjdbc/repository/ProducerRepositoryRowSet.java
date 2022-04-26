@@ -5,12 +5,14 @@ import academy.devdojo.maratonajava.javacore.ZZIjdbc.domain.Producer;
 import academy.devdojo.maratonajava.javacore.ZZIjdbc.listener.CustomRowSetListener;
 import academy.devdojo.maratonajava.javacore.ZZIjdbc.test.ConnectionFactoryTest01;
 
+import javax.sql.rowset.CachedRowSet;
 import javax.sql.rowset.JdbcRowSet;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class ProducerRepositoryRowSet {
     public static List<Producer> findByNameJdbcRowSet(String name) {
@@ -57,6 +59,25 @@ public class ProducerRepositoryRowSet {
             jrs.updateString("name", producer.getName());
             jrs.updateRow();
         } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void updateCachedRowSet(Producer producer) {
+        String sql = "SELECT * FROM producer WHERE (`id` = ?);";
+        try (CachedRowSet crs = ConnectionFactory.getCachedRowSet();
+             Connection connection = ConnectionFactory.getConnection()) {
+//            crs.addRowSetListener(new CustomRowSetListener());
+            connection.setAutoCommit(false);
+            crs.setCommand(sql);
+            crs.setInt(1, producer.getId());
+            crs.execute(connection);
+            if (!crs.next()) return;
+            crs.updateString("name", producer.getName());
+            crs.updateRow();
+            TimeUnit.SECONDS.sleep(10);
+            crs.acceptChanges();
+        } catch (SQLException | InterruptedException e) {
             e.printStackTrace();
         }
     }
