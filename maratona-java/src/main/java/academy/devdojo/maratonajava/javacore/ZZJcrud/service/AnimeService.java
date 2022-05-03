@@ -16,7 +16,6 @@ public class AnimeService {
             case 2 -> delete();
             case 3 -> save();
             case 4 -> updade();
-            default -> throw new IllegalArgumentException("Not a valid option");
         }
     }
 
@@ -26,7 +25,7 @@ public class AnimeService {
         AnimeRepository
                 .findByName(name)
                 .forEach(p ->
-                        System.out.printf("[%d] - %s%n", p.getId(), p.getName()));
+                        System.out.printf("[%d] - %s %d %s%n", p.getId(), p.getName(), p.getEpisodes(), p.getProducer().getName()));
     }
 
     private static void delete() {
