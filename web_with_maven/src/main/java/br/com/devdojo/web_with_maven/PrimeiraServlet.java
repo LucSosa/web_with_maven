@@ -17,7 +17,7 @@ public class PrimeiraServlet extends HttpServlet {
         PrintWriter writer = resp.getWriter();
         writer.println("<html>");
         writer.println("<body>");
-        writer.println("<h1>Primeira Servlet!</h1>");
+        writer.println("<h1>Primeira Servlet! Atualizado!</h1>");
         writer.println("</body>");
         writer.println("</html>");
 
