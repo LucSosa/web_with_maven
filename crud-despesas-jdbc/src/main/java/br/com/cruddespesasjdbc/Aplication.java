@@ -15,10 +15,10 @@ public class Aplication {
         DespesaDAO dao = new DespesaDAO();
 
         Despesa despesa = new Despesa();
-        despesa.setDescricao("Hortifrute");
-        despesa.setCategoria(Categoria.ALIMENTAÇÃO);
-        despesa.setValor(80);
-        despesa.setData(LocalDate.of(2021, 4, 12));
+        despesa.setDescricao("Curso Java");
+        despesa.setCategoria(Categoria.EDUCACAO);
+        despesa.setValor(497);
+        despesa.setData(LocalDate.of(2021, 1, 5));
 
         Despesa despesaInserida = dao.save(despesa);
         System.out.println("Foi inserida a despesa com id:" + despesaInserida.getId());

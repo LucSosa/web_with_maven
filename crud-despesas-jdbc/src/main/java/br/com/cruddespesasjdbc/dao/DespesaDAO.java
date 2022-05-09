@@ -21,16 +21,17 @@ public class DespesaDAO implements IDespesaDAO{
             preparedStatement.setString(4, despesa.getCategoria().toString());
 
             preparedStatement.executeUpdate();
+
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
             resultSet.next();
 
-            long generatedId = resultSet.getLong("id");
+            Long generatedId = resultSet.getLong("id");
             despesa.setId(generatedId);
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return null;
+        return despesa;
     }
 
     @Override
