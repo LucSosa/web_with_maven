@@ -10,6 +10,14 @@ public class Despesa {
     private double valor;
     private Categoria categoria;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getDescricao() {
         return descricao;
     }

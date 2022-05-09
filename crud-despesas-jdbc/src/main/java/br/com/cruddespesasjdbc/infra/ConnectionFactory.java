@@ -12,7 +12,7 @@ public class ConnectionFactory {
 
     public static Connection getConnection(){
         try {
-            return DriverManager.getConnection("jdbc::mysql://localhost/despesasDb", "localhost", "");
+            return DriverManager.getConnection("jdbc:postgresql://localhost/despesasDb", "postgres", "123");
         } catch (SQLException e) {
             throw new RuntimeException(e);
             //e.printStackTrace();
