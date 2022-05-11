@@ -33,10 +33,21 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.9</version>
+        </dependency>
+        <dependency>
             <groupId>br.com.codandosimples</groupId>
             <artifactId>crud-despesas-jdbc</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-server</artifactId>
+            <version>9.4.46.v20220331</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -84,6 +95,14 @@
                         <contextPath>/web_with_maven</contextPath>
                     </webApp>
                     <scanIntervalSeconds>10</scanIntervalSeconds>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
                 </configuration>
             </plugin>
         </plugins>
