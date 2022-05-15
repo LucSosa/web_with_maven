@@ -1,25 +1,21 @@
-package br.com.devdojo.web_with_maven;
+package br.com.devdojo.web_with_maven.acao;
 
 import br.com.codandosimples.dao.DespesaDAO;
 import br.com.codandosimples.infra.ConnectionFactory;
 import br.com.codandosimples.model.Categoria;
 import br.com.codandosimples.model.Despesa;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-@WebServlet("/adicionaDespesa")
-public class AdicionaDespesaServlet extends HttpServlet {
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+public class AdicionaDespesas implements Acao{
+    public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String descricaoStr = request.getParameter("descricao");
         String dataStr = request.getParameter("data");
         String valorStr = request.getParameter("valor");
@@ -33,8 +29,9 @@ public class AdicionaDespesaServlet extends HttpServlet {
         Connection connection = ConnectionFactory.getConnection();
         DespesaDAO dao = new DespesaDAO(connection);
         dao.save(despesa);
+        return "/WEB-INF/despesa-adicionada.jsp";
 
-        PrintWriter out = response.getWriter();
-        out.println("<html><body>Despesa adicionada com sucesso!</body></html>");
+//        RequestDispatcher dispatcher = request.getRequestDispatcher("/despesa-adicionada.jsp");
+//        dispatcher.forward(request, response);
     }
 }
